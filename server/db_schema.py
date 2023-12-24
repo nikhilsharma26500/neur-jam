@@ -5,3 +5,5 @@ from sqlalchemy import Column, ForeignKey
 from sqlalchemy.dialects.mysql import INTEGER, VARCHAR, DATETIME
 from dotenv import load_dotenv
 import os
+
+
