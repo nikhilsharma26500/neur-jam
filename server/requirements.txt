@@ -2,3 +2,5 @@ pip install uvicorn
 pip install fastapi
 pip install sqlalchemy
 pip install dotenv
+pip install Werkzeug
+pip install mysql-connector-python
