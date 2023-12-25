@@ -49,14 +49,14 @@ def confirm_login(username: str, password: str):
     session = table_session()
     user = session.query(USER).filter_by(username=username).first()
     if user is None or not verify_password(user.password_hash, password):
-        return False
-    return True
+        return "Login Failed"
+    return "Login Successful"
 
 
-def update_password(uid: str, password_hash: str):
+def update_password(uid: str, password: str):
     session = table_session()
     user = session.query(USER).filter_by(uid=uid).first()
-    user.password_hash = password_hash
+    user.password_hash = password_hash(password)
     session.commit()
     session.close()
 
@@ -96,7 +96,6 @@ def add_conversation(
     model: str,
     user_query: str,
     model_response: str,
-    created_at: datetime,
 ):
     session = table_session()
     conversation_details = CONVERSATION(
@@ -115,9 +114,17 @@ def add_conversation(
 # All chats by the user
 def get_conversations(uid: str):
     session = table_session()
+    
     conversations = session.query(CONVERSATION).filter_by(uid=uid).all()
+    
     session.close()
-    return conversations
+    
+    conversations_dict = [conversation.__dict__ for conversation in conversations]
+    
+    for conversation in conversations_dict:
+        conversation.pop("_sa_instance_state")
+    
+    return conversations_dict
 
 
 # Whole conversation within a chat session
@@ -127,7 +134,11 @@ def get_user_chat_conversation(uid: str, chat_id: str):
         session.query(CONVERSATION).filter_by(uid=uid, chat_id=chat_id).first()
     )
     session.close()
-    return conversation
+    
+    conversations_dict = conversation.__dict__
+    conversations_dict.pop("_sa_instance_state")
+    
+    return conversations_dict
 
 
 # Whole conversation with one model
@@ -135,6 +146,10 @@ def get_model_conversation(uid: str, model: str):
     session = table_session()
     conversation = session.query(CONVERSATION).filter_by(uid=uid, model=model).first()
     session.close()
+    
+    conversations_dict = conversation.__dict__
+    conversations_dict.pop("_sa_instance_state")
+    
     return conversation
 
 

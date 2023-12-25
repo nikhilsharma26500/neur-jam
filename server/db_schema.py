@@ -30,7 +30,7 @@ class USER(Base):
     last_name = Column(VARCHAR(36), nullable=False)
     email = Column(VARCHAR(100), unique=True, nullable=False)
     username = Column(VARCHAR(36), unique=True, nullable=False)
-    password_hash = Column(VARCHAR(64), unique=True, nullable=False)
+    password_hash = Column(VARCHAR(256), unique=True, nullable=False)
     is_active = Column(BOOLEAN, default=True, nullable=False)
     is_verified = Column(BOOLEAN, default=False, nullable=False)
     last_login = Column(DATETIME, nullable=False)
@@ -49,7 +49,7 @@ class CONVERSATION(Base):
     chat_id = Column(VARCHAR(36), unique=True, nullable=False)
     model = Column(VARCHAR(36), nullable=False)
     user_query = Column(VARCHAR(4000), nullable=False)
-    model_reponse = Column(TEXT, nullable=False)
+    model_response = Column(TEXT, nullable=False)
     created_at = Column(DATETIME, nullable=False)
 
 
