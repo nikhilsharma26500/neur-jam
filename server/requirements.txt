@@ -4,3 +4,4 @@ pip install sqlalchemy
 pip install dotenv
 pip install Werkzeug
 pip install mysql-connector-python
+pip install  google-generativeai
