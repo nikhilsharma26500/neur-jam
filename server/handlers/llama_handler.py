@@ -5,7 +5,9 @@ load_dotenv(find_dotenv())
 
 
 class LlamaAIHandler:
-    def get_response_llama(self, model: str, user_query: str, api_key: str):
+    def get_response_llama(
+        self, model: str, system_message: str, user_query: str, api_key: str
+    ):
         FIREWORKS_API_KEY = api_key
         fireworks.client.api_key = FIREWORKS_API_KEY
 
@@ -15,7 +17,7 @@ class LlamaAIHandler:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a general purpose bot",
+                        "content": system_message or "general purpose bot",
                     },
                     {
                         "role": "user",
