@@ -38,3 +38,4 @@ next-env.d.ts
 
 # cache
 server/__pycache__
+server/handlers/__pycache__
