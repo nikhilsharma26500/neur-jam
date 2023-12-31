@@ -5,4 +5,4 @@ pip install dotenv
 pip install Werkzeug
 pip install mysql-connector-python
 pip install  google-generativeai
-pip install ibm_watson_machine_learning
+pip install fireworks-ai
