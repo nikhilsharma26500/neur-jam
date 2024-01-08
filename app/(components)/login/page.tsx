@@ -1,45 +1,98 @@
-import React from 'react'
+import { Button } from "@/components/ui/button"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+} from "@/components/ui/tabs"
 
 const login = () => {
     return (
-        <>
-            <div className='container h-screen mx-auto border-2 border-black'>
-                <div className='flex flex-col h-3/4 items-center justify-center border-2 border-black'>
-                    <div className="">
-                        <h1>Hi there!</h1>
-                        <h2>Log in to NeurJAM</h2>
-                    </div>
+        <div className='container h-screen mx-auto'>
+            <Tabs defaultValue="login" className="w-[400px]">
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="login">Login</TabsTrigger>
+                    <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                </TabsList>
 
-                    <div>
-                        <form>
-                            <div>
-                                <label htmlFor="email">Email</label>
-                                <input type="email" name="email" id="email" className='border-2 border-black' />
+                <TabsContent value="login">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Log in to NeurJAM</CardTitle>
+                            {/* <CardDescription>
+                            Change your password here. After saving, you'll be logged out.
+                        </CardDescription> */}
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                            <div className="space-y-1">
+                                <Label htmlFor="current">Email</Label>
+                                <Input id="current" type="email" />
                             </div>
-
-                            <div>
-                                <label htmlFor="password">Password</label>
-                                <input type="password" name="password" id="password" className='border-2 border-black' />
+                            <div className="space-y-1">
+                                <Label htmlFor="new">Password</Label>
+                                <Input id="new" type="password" />
                             </div>
+                        </CardContent>
+                        <CardFooter>
+                            <Button>Login</Button>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
 
-                            <div>
-                                <p>Do not have an account? <a href="/signup">Sign up here</a></p>
+                <TabsContent value="signup">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Create an account on NeurJAM</CardTitle>
+                            {/* <CardDescription>
+                            Make changes to your account here. Click save when you're done.
+                        </CardDescription> */}
+                        </CardHeader>
+                        <CardContent className="space-y-2">
+                            <div className="space-y-1">
+                                <Label htmlFor="name">First Name</Label>
+                                <Input id="name" placeholder="Pedro" />
                             </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="name">Last Name</Label>
+                                <Input id="name" placeholder="Duarte" />
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="username">Username</Label>
+                                <Input id="username" placeholder="@peduarte" />
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="username" placeholder="peduarte@test.com" />
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="password">Password</Label>
+                                <Input id="password" type="password" />
+                            </div>
+                            <div className="space-y-1">
+                                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                                <Input id="confirmPassword" type="password" />
+                            </div>
+                        </CardContent>
+                        <CardFooter>
+                            <Button>Sign Up</Button>
+                        </CardFooter>
+                    </Card>
+                </TabsContent>
+            </Tabs>
 
-                            <a href="#_" className="relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl group">
-                                <span className="absolute top-0 left-0 w-40 h-40 -mt-10 -ml-3 transition-all duration-700 bg-red-500 rounded-full blur-md ease"></span>
-                                <span className="absolute inset-0 w-full h-full transition duration-700 group-hover:rotate-180 ease">
-                                    <span className="absolute bottom-0 left-0 w-24 h-24 -ml-10 bg-purple-500 rounded-full blur-md"></span>
-                                    <span className="absolute bottom-0 right-0 w-24 h-24 -mr-10 bg-pink-500 rounded-full blur-md"></span>
-                                </span>
-                                <span className="relative text-white">Login</span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </>
+        </div>
     )
 }
+
 
 export default login
