@@ -4,7 +4,7 @@ const login = () => {
     return (
         <>
             <div className='container h-screen mx-auto border-2 border-black'>
-                <div className='flex flex-col h-[100%] items-center justify-center border-2'>
+                <div className='flex flex-col h-3/4 items-center justify-center border-2 border-black'>
                     <div className="">
                         <h1>Hi there!</h1>
                         <h2>Log in to NeurJAM</h2>
@@ -20,6 +20,10 @@ const login = () => {
                             <div>
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" id="password" className='border-2 border-black' />
+                            </div>
+
+                            <div>
+                                <p>Do not have an account? <a href="/signup">Sign up here</a></p>
                             </div>
 
                             <a href="#_" className="relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl group">
