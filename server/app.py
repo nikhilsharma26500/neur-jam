@@ -5,8 +5,8 @@ from handlers.openai_handler import OpenAIHandler
 from handlers.mistral_handler import MistralAIHandler
 from handlers.llama_handler import LlamaAIHandler
 
-from db_functions import add_conversation
-from db_schema import table_session
+from database.db_functions import add_conversation
+from database.db_schema import table_session
 import os
 
 import uuid
